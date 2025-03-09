@@ -1,0 +1,59 @@
+Preprint
+BAXBENCH: CAN LLMS GENERATE
+CORRECT AND SECURE BACKENDS?
+MarkVero1,NielsMündler1,VictorChibotaru2,VeselinRaychev2,MaximilianBaader1,
+NikolaJovanovic´1,JingxuanHe3,MartinVechev1
+1ETHZurich,2LogicStar.ai,3UCBerkeley
+{mark.vero,niels.muendler}@inf.ethz.ch,{chibo,veselin}@logicstar.ai
+ABSTRACT
+Theautomaticgenerationofprogramshaslongbeenafundamentalchallengein
+computer science. Recent benchmarks have shown that large language models
+(LLMs)caneffectivelygeneratecodeatthefunctionlevel,makecodeedits,and
+solvealgorithmiccodingtasks. However,toachievefullautomation,LLMsshould
+beabletogenerateproduction-quality,self-containedapplicationmodules. Toeval-
+uatethecapabilitiesofLLMsinsolvingthischallenge,weintroduceBAXBENCH,
+anovelevaluationbenchmarkconsistingof392tasksforthegenerationofbackend
+applications.Wefocusonbackendsforthreecriticalreasons:(i)theyarepractically
+relevant,buildingthecorecomponentsofmostmodernwebandcloudsoftware,(ii)
+theyaredifficulttogetright,requiringmultiplefunctionsandfilestoachievethe
+desiredfunctionality,and(iii)theyaresecurity-critical,astheyareexposedtoun-
+trustedthird-parties,makingsecuresolutionsthatpreventdeployment-timeattacks
+animperative. BAXBENCHvalidatesthefunctionalityofthegeneratedapplications
+withcomprehensivetestcases,andassessestheirsecurityexposurebyexecuting
+end-to-endexploits. OurexperimentsrevealkeylimitationsofcurrentLLMsin
+bothfunctionalityandsecurity: (i)eventhebestmodel,OpenAIo1,achievesa
+mere 60% on code correctness; (ii) on average, we could successfully execute
+securityexploitsonmorethanhalfofthecorrectprogramsgeneratedbyeachLLM;
+and(iii)inlesspopularbackendframeworks,modelsfurtherstruggletogenerate
+correctandsecureapplications. ProgressonBAXBENCHsignifiesimportantsteps
+towardsautonomousandsecuresoftwaredevelopmentwithLLMs1.
+1 INTRODUCTION
+Correct, Correct,
+Automating software development is a key aspi- Incorrect Insecure Secure
+rationalgoalofLargeLanguageModels(LLMs), 100%
+promising to revolutionize the software industry
+(Lyu et al., 2024). They have shown impres-
+sive capabilities in assisting developers by gen-
+50%
+erating function-level completions (Chen et al.,
+35%
+2021;Austinetal.,2021a),suggestingcodepatches
+(Jimenezetal.,2024),andsolvingalgorithmicprob-
+lems(Hendrycksetal.,2021). However,itremains 0%
+OpenAI Claude DeepSeek OpenAI
+unclearifLLMsarereadytoautonomouslygener- o3-mini 3.5 Sonnet R1 o1
+atelarger-scale,deployment-readycode.
+Figure 1: Even flagship models struggle to
+generate correct and secure application back-
+The Gap in LLM Code Benchmarking This ends,signifyingthatLLMsarenotyetreadyfor
+gap in understanding LLMs’ capabilities is also deployment-readycodingautomation.
+reflectedinthecurrentstateofLLMbenchmarking.
+Namely,mostcurrentcodingbenchmarksassessLLMs’capabilitiesatfunction-levelcodewriting
+andbugfixing(Chenetal.,2021;Austinetal.,2021a;Muennighoffetal.,2023),orfocusonspecific
+1Codeanddatasetareavailableat:https://baxbench.com/
+1
+5202
+beF
+71
+]RC.sc[
+1v44811.2052:viXra
