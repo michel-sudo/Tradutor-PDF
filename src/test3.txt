@@ -1,0 +1,60 @@
+
+
+              BAXBENCH: O LLMS PODE GERAR
+              BACKENDS CORRETOS E SEGUROS?
+
+
+ Mark Vero1, Niels Mündler1, Victor Chibotaru2, Veselin Raychev2, Maximilian Baader1,
+ Nikola Jovanovi'c1, Jingxuan He3, Martin Vechev1
+ 1ETH Zurique, 2LogicStar.ai, 3UC Berkeley
+ {mark.vero,niels.muendler}@inf.ethz.ch,{chibo,veselin}@logicstar.ai
+
+
+                                                RESUMO
+
+          A geração automática de programas é, há muito tempo, um desafio fundamental na
+          ciência da computação. Benchmarks recentes mostraram que modelos de linguagem grandes
+          (LLMs) podem gerar códigos de forma eficaz no nível da função, fazer edições de código e
+          resolver tarefas de codificação algorítmica. No entanto, para alcançar a automação total, os LLMs devem
+          ser capazes de gerar módulos de aplicativos autônomos e com qualidade de produção. Para avaliar
+          Para avaliar os recursos dos LLMs na solução desse desafio, apresentamos o BAXBENCH,
+          um benchmark de avaliação de desempenho que consiste em 392 tarefas para a geração de aplicativos de back-end.
+          aplicativos. Nosso foco está nos backends por três razões fundamentais: (i) eles são praticamente
+          relevantes, criando os componentes principais da maioria dos softwares modernos de web e nuvem, (ii)
+          são difíceis de acertar, exigindo várias funções e arquivos para alcançar a funcionalidade desejada
+          (ii) são difíceis de acertar, exigindo várias funções e arquivos para alcançar a funcionalidade desejada e (iii) são essenciais para a segurança, pois são expostos a terceiros não
+          terceiros não confiáveis, o que torna as soluções de segurança que evitam ataques em tempo de implementação
+          de implantação. A BAXBENCH valida a funcionalidade dos aplicativos gerados
+          com casos de teste abrangentes e avalia sua exposição à segurança executando
+          explorações de ponta a ponta. Nossos experimentos revelam as principais limitações dos LLMs atuais
+          funcionalidade e segurança: (i) até mesmo o melhor modelo, o OpenAI o1, atinge apenas
+          (i) mesmo o melhor modelo, o OpenAI o1, atinge apenas 60% de correção do código; (ii) em média, conseguimos executar com sucesso
+          explorações de segurança em mais da metade dos programas corretos gerados por cada LLM;
+          e (iii) em estruturas de back-end menos populares, os modelos têm mais dificuldade para gerar aplicativos
+          aplicativos corretos e seguros. O progresso na BAXBENCH significa passos importantes
+          rumo ao desenvolvimento de software autônomo e seguro com LLMs1.
+
+1 INTRODUÇÃO
+
+Automatizar o desenvolvimento de software é um dos principais objetivos aspi-
+objetivo racional dos modelos de linguagem grande (LLMs),
+prometendo revolucionar o setor de software
+(Lyu et al.,2024).    Eles demonstraram capacidades impressionantes
+Eles demonstraram recursos importantes para auxiliar os desenvolvedores ao gerar
+gerando conclusões em nível de função (Chen et al,
+2021;Austinetal.,2021a),sugerindocodepatches
+(Jimenezetal.,2024) e resolvendo problemas algorítmicos (Hendryckset al.
+problemas (Hendryckset al.,2021). No entanto, ainda não está
+não está claro se os LLMs estão prontos para gerar de forma autônoma
+gerar autonomamente códigos em grande escala e prontos para implantação.                   Figura 1: Até mesmo os principais modelos têm dificuldade para
+A lacuna no benchmarking de código dos LLMs Isso gera um back-end de aplicativo correto e seguro.
+A lacuna na compreensão dos recursos dos LLMs também é extrema, o que significa que os LLMs ainda não estão prontos para a implementação.
+A lacuna na compreensão dos recursos dos LLMs também termina, o que significa que os LLMs ainda não estão prontos para a automação de codificação pronta para a implantação.
+
+Ou seja, a maioria dos benchmarks de codificação atuais avalia os recursos dos LLMs na escrita de código em nível de função
+e correção de bugs (Chenetal.,2021; Austinetal.,2021a; Muennighoffetal.,2023), ou focam em
+
+   1O código e o conjunto de dados estão disponíveis em: https://baxbench.com/
+
+
+                                                       1

@@ -15,7 +15,7 @@ parChar = ""
 textOut = ""
 
 while (b < len(text)):
-    parChar = text[a:b]
+    parChar = text[a:b] 
     if(parChar != "\n"):
         line += parChar
     else:
